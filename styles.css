@@ -50,8 +50,12 @@ h6 {
   --black: #000000;
   --light-blue: #8fcfd6;
   --light-grey: #e8e8e8;
+  --dark-grey: #999999;
+  --green: #A2CB94;
+  --red: #FF6060;
   --large-font: 2rem;
   --medium-font: 1.5rem;
+  --small-font: 1.1rem;
 }
 
 /* ---------------------HEADER--------------------- */
@@ -93,14 +97,14 @@ h1 {
 .main-content {
     height: 100%;
     background-color: var(--light-grey);
-    padding: 5%;
+    padding: 30px 5%;
 }
 
 .add-book {
     display: flex;
     align-items: center;
     gap: 5px;
-    font-size: 1.1rem;
+    font-size: var(--small-font);
     margin-bottom: 20px;
   }
 
@@ -122,14 +126,52 @@ h1 {
     margin-bottom: 10px;
 }
 
+/* ---------------------GRID--------------------- */
+
+
 .books-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 50px;
     border: 1px solid red;
 }
 
 .card {
-    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    font-size: var(--small-font);
+    background-color: var(--white);
+    box-shadow: 0 3px 10px var(--dark-grey);
+}
+
+.book-title {
+    font-size: var(--medium-font);
+}
+
+.btn-container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 60px;
+}
+
+.btn-container button {
+    background-color: var(--light-grey);
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.read-btn.read {
+    background-color: var(--green);
+}
+
+.remove-btn {
+    background-color: var(--red);
 }
 
 
