@@ -1,5 +1,8 @@
-const displayBooks = document.querySelector(".books-grid");
+const addBookBtn = document.querySelector('.add-btn')
+const addBookForm = document.getElementById('book-form')
 
+
+   
 const myLibrary = [];
 
 function Book(title, author, pages, read) {
