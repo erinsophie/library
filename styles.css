@@ -50,6 +50,8 @@ h6 {
   --black: #000000;
   --light-blue: #8fcfd6;
   --light-grey: #e8e8e8;
+  --large-font: 2rem;
+  --medium-font: 1.5rem;
 }
 
 /* ---------------------HEADER--------------------- */
@@ -59,12 +61,24 @@ header {
   padding: 20px 30px;
 }
 
-.title {
-  font-size: 2rem;
+.title-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
-.message {
-    font-size: 1.5rem;
+h1 {
+    font-size: var(--large-font);
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    gap: 5%;
+}
+
+.icon, .message {
+    font-size: var(--medium-font);
 }
 
 .header-container {
@@ -73,30 +87,49 @@ header {
   align-items: center;
 }
 
-.add-book {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 1.2rem;
-}
-
-.add-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  cursor: pointer;
-  background-color: white;
-  border: 1px solid var(--black);
-}
 
 /* ---------------------MAIN CONTENT--------------------- */
 
 .main-content {
     height: 100%;
     background-color: var(--light-grey);
+    padding: 5%;
+}
+
+.add-book {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+  }
+
+.add-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: transparent;
+    border: 1px solid var(--black);
+  }
+
+.grid-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    border: 1px solid red;
+}
+
+.card {
+    border: 1px solid red;
 }
 
 
