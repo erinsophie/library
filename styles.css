@@ -48,10 +48,9 @@ h6 {
 :root {
   --white: #ffffff;
   --black: #000000;
-  --light-blue: #8fcfd6;
   --light-grey: #e8e8e8;
   --dark-grey: #999999;
-  --green: #A2CB94;
+  --green: #8BF384;
   --red: #FF6060;
   --large-font: 2rem;
   --medium-font: 1.5rem;
@@ -99,9 +98,15 @@ h1 {
 /* ---------------------MAIN CONTENT--------------------- */
 
 .main-content {
-    height: 100%;
+    min-height: 100%;
+    max-height: min-content;
     background-color: var(--light-grey);
     padding: 50px 5%;
+}
+
+.overlay {
+     display: none;
+     background-color: var(--dark-grey);
 }
 
 .grid-title {
@@ -179,11 +184,88 @@ h1 {
     background-color: var(--red);
 }
 
-/* ---------------------FORM ELEMENTS--------------------- */
+/* ---------------------MODAL-------------------- */
+
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal {
+  background-color: var(--light-grey);
+  position: relative;
+  width: 25%;
+  min-width: 300px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: var(--shadow)
+}
+
+.modal-container.active {
+  display: flex;
+}
+
+
+/* ---------------------FORM-------------------- */
+
 
 #book-form {
-    display: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
 }
+
+#book-form input {
+  font-size: var(--small-font);
+  color: var(--black);
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  margin-bottom: 20px;
+}
+
+input:focus {
+  outline: none;
+  border: 1px solid var(--dark-grey);
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#book-form input[type='checkbox'] {
+   width: 20px;
+   margin-bottom: 0;
+}
+
+#book-form button {
+  width: 50%;
+  background-color: var(--green);
+  color: var(--black);
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+
+
+
+
+
+
 
 
 
