@@ -56,6 +56,7 @@ h6 {
   --large-font: 2rem;
   --medium-font: 1.5rem;
   --small-font: 1.1rem;
+  --shadow: 0 3px 10px var(--dark-grey);
 }
 
 /* ---------------------HEADER--------------------- */
@@ -63,6 +64,9 @@ h6 {
 header {
   background-color: var(--white);
   padding: 20px 30px;
+  position: sticky;
+  top: 0;
+  box-shadow: var(--shadow);
 }
 
 .title-container {
@@ -97,7 +101,13 @@ h1 {
 .main-content {
     height: 100%;
     background-color: var(--light-grey);
-    padding: 30px 5%;
+    padding: 50px 5%;
+}
+
+.grid-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 
 .add-book {
@@ -105,7 +115,7 @@ h1 {
     align-items: center;
     gap: 5px;
     font-size: var(--small-font);
-    margin-bottom: 20px;
+    margin-bottom: 30px;
   }
 
 .add-btn {
@@ -120,11 +130,6 @@ h1 {
     border: 1px solid var(--black);
   }
 
-.grid-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
 
 /* ---------------------GRID--------------------- */
 
@@ -133,7 +138,6 @@ h1 {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 50px;
-    border: 1px solid red;
 }
 
 .card {
@@ -141,9 +145,10 @@ h1 {
     flex-direction: column;
     gap: 15px;
     padding: 20px;
+    border-radius: 10px;
     font-size: var(--small-font);
     background-color: var(--white);
-    box-shadow: 0 3px 10px var(--dark-grey);
+    box-shadow: var(--shadow);
 }
 
 .book-title {
