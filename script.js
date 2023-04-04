@@ -59,11 +59,25 @@ function Book(title, author, pages, read) {
   this.pages = pages;
   this.read = read;
 }
-const modalContainer = document.querySelector('.modal-container');
+
+// make form pop up when add book button is clicked
+
+const modal = document.querySelector('.modal');
 const addBookBtn = document.querySelector('.add-btn')
 const overlay = document.querySelector('.overlay')
 
 addBookBtn.addEventListener('click', () => {
-  modalContainer.classList.add('active')
-  overlay.style.display = 'block'
+  modal.classList.add('active')
+  overlay.classList.add('active')
 })
+
+// close modal
+
+overlay.addEventListener('click', () => {
+  modal.classList.remove('active');
+  overlay.classList.remove('active')
+})
+ 
+
+
+
