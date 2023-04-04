@@ -8,10 +8,11 @@ const myLibrary = [
 
 const booksGrid = document.querySelector('.books-grid');
 
-// loop through library array and create card element for each object
+// create card element for the last object that was added (most recent book)
 
-function createBook() {
-  myLibrary.forEach((book) => {
+function displayBook() {
+   const book = myLibrary[myLibrary.length - 1];
+
     const card = document.createElement('div');
     card.classList.add('card');
   
@@ -46,19 +47,10 @@ function createBook() {
     card.appendChild(btnContainer);
   
     booksGrid.appendChild(card);
-  });
-}
-
-createBook()
+  };
 
 
-
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-}
+displayBook()
 
 // make form pop up when add book button is clicked
 
@@ -73,11 +65,43 @@ addBookBtn.addEventListener('click', () => {
 
 // close modal
 
-overlay.addEventListener('click', () => {
+function closeModal() {
   modal.classList.remove('active');
-  overlay.classList.remove('active')
-})
+  overlay.classList.remove('active');
+}
+
+overlay.addEventListener('click', closeModal);
+
+// form button
+
+const formBtn = document.querySelector('.form-btn')
+
+function Book(title, author, pages, read) {
+  this.title = title;
+  this.author = author;
+  this.pages = pages;
+  this.read = read;
+}
+
+// Add book to library when button is clicked
+
+function addBook(event) {
+  event.preventDefault(); 
+
+  const title = document.querySelector('#book-title').value;
+  const author = document.querySelector('#book-author').value;
+  const pages = document.querySelector('#book-pages').value;
+  const read = document.querySelector('#is-read').checked;
+
+  const newBook = new Book(title, author, pages, read);
+  myLibrary.push(newBook);
+
+  displayBook();
+  closeModal();
+}
  
+formBtn.addEventListener('click', addBook);
+
 
 
 
