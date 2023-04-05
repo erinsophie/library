@@ -1,5 +1,4 @@
 // my library array of objects 
-
 const myLibrary = [
   { title: 'Harry Potter', author: 'J.K Rowling', pages: 295, read: false },
 ];
@@ -92,6 +91,19 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
+// check library in case book already exists 
+
+function checkLibrary(book) {
+  for(let i = 0; i < myLibrary.length; i++) {
+    if(book.title === myLibrary[i].title) {
+      alert('This book already exists in your library')
+      return true;
+    }
+  }
+  return false 
+}
+
+
 // Add book to library when form button is clicked
 
 function addBook(event) {
@@ -109,6 +121,11 @@ function addBook(event) {
   const read = document.querySelector('#is-read').checked;
 
   const newBook = new Book(title, author, pages, read);
+
+  // if book already exists, then exit addBook function
+  if(checkLibrary(newBook)) {
+    return;
+  }
   
   myLibrary.push(newBook);
   const index = myLibrary.indexOf(newBook);
@@ -130,13 +147,7 @@ Book.prototype.removeBook = function(index) {
   myLibrary.splice(index, 1)
 }
 
-function checkLibrary() {
-  for(let i = 0; i < myLibrary.length; i++) {
-    if(newBook.title === myLibrary[i].title) {
-      
-    }
-  }
-}
+
 
 
 
