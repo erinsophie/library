@@ -2,6 +2,15 @@
 
 const myLibrary = [];
 
+// capitalise first letter of input 
+
+function capitaliseLetter(str) {
+  const splitStr = str.split(' ')
+  const capitalised = splitStr.map(word => word.charAt(0).toUpperCase() + word.slice(1))
+  return capitalised.join(' ')
+}
+
+
 // books grid 
 
 const booksGrid = document.querySelector('.books-grid');
@@ -15,11 +24,11 @@ function displayBook(book, index) {
   
     const title = document.createElement('p');
     title.classList.add('book-title');
-    title.textContent = book.title;
+    title.textContent = capitaliseLetter(book.title);
   
     const author = document.createElement('p');
     author.classList.add('author');
-    author.textContent = `by ${book.author}`;
+    author.textContent = `by ${capitaliseLetter(book.author)}`
   
     const pages = document.createElement('p');
     pages.classList.add('pages');
@@ -157,13 +166,6 @@ Book.prototype.toggleReadStatus = function() {
 Book.prototype.removeBook = function(index) {
   myLibrary.splice(index, 1)
 }
-
-
-
-
-
-
-
 
 
 
