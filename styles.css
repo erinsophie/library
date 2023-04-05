@@ -190,13 +190,6 @@ h1 {
     cursor: pointer;
 }
 
-.read-btn.read {
-    background-color: var(--green);
-}
-
-.remove-btn {
-    background-color: var(--red);
-}
 
 /* ---------------------MODAL-------------------- */
 

@@ -8,10 +8,9 @@ const myLibrary = [
 
 const booksGrid = document.querySelector('.books-grid');
 
-
 // create card element for the last object that was added (most recent book)
 
-function displayBook(book) {
+function displayBook(book, index) {
 
     const card = document.createElement('div');
     card.classList.add('card');
@@ -41,6 +40,10 @@ function displayBook(book) {
     const removeBtn = document.createElement('button');
     removeBtn.classList.add('remove-btn');
     removeBtn.textContent = 'Remove';
+    removeBtn.addEventListener('click', () => {
+      book.removeBook(index);
+      card.remove()
+    })
   
     const btnContainer = document.createElement('div');
     btnContainer.classList.add('btn-container');
@@ -80,6 +83,8 @@ overlay.addEventListener('click', closeModal);
 
 const formBtn = document.querySelector('.form-btn')
 
+// constructor 
+
 function Book(title, author, pages, read) {
   this.title = title;
   this.author = author;
@@ -93,9 +98,10 @@ function addBook(event) {
   event.preventDefault(); 
 
   // take the values from the inputs of the form and store them, then use them as the arguements for the new book constructor
+ // loop through myLibrary to check if that book title already exists
+ // assign an index to the new book and pass it to the function that creates the card
  // push the new book to the myLibrary array
- // call display book to create a card for the new book and append it to the grid
- // close the modal after 
+ // call display book with the new book argument and its given index
 
   const title = document.querySelector('#book-title').value;
   const author = document.querySelector('#book-author').value;
@@ -103,9 +109,10 @@ function addBook(event) {
   const read = document.querySelector('#is-read').checked;
 
   const newBook = new Book(title, author, pages, read);
+  
   myLibrary.push(newBook);
-
-  displayBook(newBook); 
+  const index = myLibrary.indexOf(newBook);
+  displayBook(newBook, index);
   closeModal();
 }
 
@@ -119,9 +126,20 @@ Book.prototype.toggleReadStatus = function() {
   this.read = !this.read;
 };
 
-// change read status
+Book.prototype.removeBook = function(index) {
+  myLibrary.splice(index, 1)
+}
 
-const readBtns = document.querySelectorAll('.read-btn')
+function checkLibrary() {
+  for(let i = 0; i < myLibrary.length; i++) {
+    if(newBook.title === myLibrary[i].title) {
+      
+    }
+  }
+}
+
+
+
 
 
 
