@@ -190,6 +190,14 @@ h1 {
     cursor: pointer;
 }
 
+.read-btn.green {
+  background-color: var(--green);
+}
+
+.read-btn.red {
+  background-color: var(--red);
+}
+
 
 /* ---------------------MODAL-------------------- */
 

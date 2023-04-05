@@ -1,7 +1,6 @@
 // my library array of objects 
-const myLibrary = [
-  { title: 'Harry Potter', author: 'J.K Rowling', pages: 295, read: false },
-];
+
+const myLibrary = [];
 
 // books grid 
 
@@ -26,16 +25,26 @@ function displayBook(book, index) {
     pages.classList.add('pages');
     pages.textContent = `${book.pages} pages`;
   
+
+    // READ BUTTON
     const readBtn = document.createElement('button');
     readBtn.classList.add('read-btn');
     // displays inital value based on checkbox
     readBtn.textContent = book.read ? 'Read' : 'Not read';
-    // toggle read status when read button is clicked
+    if(book.read) {
+      readBtn.classList.add('green')
+    } else {
+      readBtn.classList.add('red')
+    }
+    // toggle read status when button is clicked
     readBtn.addEventListener('click', () => {
     book.toggleReadStatus();
     readBtn.textContent = book.read ? 'Read' : 'Not read';
+    readBtn.classList.toggle('green', book.read);
+    readBtn.classList.toggle('red', !book.read);
   });
-  
+
+   // REMOVE BUTTON
     const removeBtn = document.createElement('button');
     removeBtn.classList.add('remove-btn');
     removeBtn.textContent = 'Remove';
@@ -142,6 +151,8 @@ formBtn.addEventListener('click', addBook);
 Book.prototype.toggleReadStatus = function() {
   this.read = !this.read;
 };
+
+// define remove book function on prototype
 
 Book.prototype.removeBook = function(index) {
   myLibrary.splice(index, 1)
