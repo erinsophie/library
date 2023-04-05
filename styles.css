@@ -152,6 +152,9 @@ h1 {
 
 /* ---------------------GRID--------------------- */
 
+.title-hr {
+  margin-bottom: 30px;
+}
 
 .books-grid {
     display: grid;
@@ -270,16 +273,6 @@ input:focus {
   padding: 10px;
   cursor: pointer;
 }
-
-
-
-
-
-
-
-
-
-
 
 
 

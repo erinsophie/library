@@ -2,6 +2,10 @@
 
 const myLibrary = [];
 
+// books grid 
+
+const booksGrid = document.querySelector('.books-grid');
+
 // capitalise first letter of input 
 
 function capitaliseLetter(str) {
@@ -10,10 +14,25 @@ function capitaliseLetter(str) {
   return capitalised.join(' ')
 }
 
+// check if library is empty
 
-// books grid 
+function isLibraryEmpty() {
+  if(myLibrary.length === 0) {
+    return true;
+  } 
+  return false 
+}
 
-const booksGrid = document.querySelector('.books-grid');
+function messageStatus() {
+  const message = document.querySelector('.empty-msg');
+
+  if(!isLibraryEmpty()) {
+    message.style.display = 'none';
+  } else {
+    message.style.display = 'block';
+  }
+}
+  
 
 // create card element for the last object that was added (most recent book)
 
@@ -59,7 +78,8 @@ function displayBook(book, index) {
     removeBtn.textContent = 'Remove';
     removeBtn.addEventListener('click', () => {
       book.removeBook(index);
-      card.remove()
+      messageStatus()
+      card.remove();
     })
   
     const btnContainer = document.createElement('div');
@@ -73,7 +93,11 @@ function displayBook(book, index) {
     card.appendChild(btnContainer);
   
     booksGrid.appendChild(card);
+
+    messageStatus()
   };
+
+
 
 
 // make form pop up when add book button is clicked
@@ -95,10 +119,6 @@ function closeModal() {
 }
 
 overlay.addEventListener('click', closeModal);
-
-// form button
-
-const formBtn = document.querySelector('.form-btn')
 
 // constructor 
 
@@ -122,11 +142,12 @@ function checkLibrary(book) {
 }
 
 
+
 // Add book to library when form button is clicked
 
 function addBook(event) {
-  event.preventDefault(); 
-
+  event.preventDefault();
+  
   // take the values from the inputs of the form and store them, then use them as the arguements for the new book constructor
  // loop through myLibrary to check if that book title already exists
  // assign an index to the new book and pass it to the function that creates the card
@@ -151,8 +172,12 @@ function addBook(event) {
   closeModal();
 }
 
+
+
+
 // form button
 
+const formBtn = document.querySelector('.form-btn')
 formBtn.addEventListener('click', addBook);
 
 // define read status function on prototype 
@@ -166,6 +191,9 @@ Book.prototype.toggleReadStatus = function() {
 Book.prototype.removeBook = function(index) {
   myLibrary.splice(index, 1)
 }
+
+
+
 
 
 
