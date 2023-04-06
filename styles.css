@@ -208,6 +208,9 @@ h1 {
   background-color: var(--red);
 }
 
+.empty-msg {
+  display: block;
+}
 
 /* ---------------------MODAL-------------------- */
 

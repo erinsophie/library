@@ -28,12 +28,23 @@ function messageStatus() {
   }
 }
 
+// update index of each card in myLibrary array
+
+function updateCardIndexes() {
+  const cards = document.querySelectorAll('.card');
+  cards.forEach((card, index) => {
+    card.setAttribute('data-index', index);
+  });
+}
+
+
 
 
 // create card element for the each book
 function displayBook(book, index) {
     const card = document.createElement('div');
     card.classList.add('card');
+    card.setAttribute('data-index', index);
   
     const title = document.createElement('p');
     title.classList.add('book-title');
@@ -71,10 +82,12 @@ function displayBook(book, index) {
     removeBtn.classList.add('remove-btn');
     removeBtn.textContent = 'Remove';
     removeBtn.addEventListener('click', () => {
-      book.removeBook(index);
-      messageStatus()
+      const cardIndex = card.dataset.index;
       card.remove();
-    })
+      isLibraryEmpty();
+      messageStatus();
+      myLibrary[cardIndex].removeBook(cardIndex);
+    });
   
     const btnContainer = document.createElement('div');
     btnContainer.classList.add('btn-container');
@@ -87,9 +100,9 @@ function displayBook(book, index) {
     card.appendChild(btnContainer);
   
     booksGrid.appendChild(card);
+    isLibraryEmpty()
     messageStatus();
   };
-
 
 
 
@@ -179,7 +192,9 @@ Book.prototype.toggleReadStatus = function() {
   this.read = !this.read;
 };
 
-// define remove book function on prototype
 Book.prototype.removeBook = function(index) {
-  myLibrary.splice(index, 1)
-}
+  myLibrary.splice(index, 1);
+  updateCardIndexes();
+};
+
+
