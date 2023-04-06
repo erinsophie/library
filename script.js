@@ -32,12 +32,12 @@ function messageStatus() {
     message.style.display = 'block';
   }
 }
-  
 
-// create card element for the last object that was added (most recent book)
+
+
+// create card element for the each book
 
 function displayBook(book, index) {
-
     const card = document.createElement('div');
     card.classList.add('card');
   
@@ -94,21 +94,23 @@ function displayBook(book, index) {
   
     booksGrid.appendChild(card);
 
-    messageStatus()
+    messageStatus();
   };
 
 
 
-
+    
 // make form pop up when add book button is clicked
 
 const modal = document.querySelector('.modal');
 const addBookBtn = document.querySelector('.add-btn')
 const overlay = document.querySelector('.overlay')
+const formInputs = document.querySelector('#book-form')
 
 addBookBtn.addEventListener('click', () => {
-  modal.classList.add('active')
-  overlay.classList.add('active')
+  modal.classList.add('active');
+  overlay.classList.add('active');
+  formInputs.reset();
 })
 
 // close modal
@@ -143,6 +145,7 @@ function checkLibrary(book) {
 
 
 
+
 // Add book to library when form button is clicked
 
 function addBook(event) {
@@ -173,8 +176,6 @@ function addBook(event) {
 }
 
 
-
-
 // form button
 
 const formBtn = document.querySelector('.form-btn')
@@ -191,9 +192,6 @@ Book.prototype.toggleReadStatus = function() {
 Book.prototype.removeBook = function(index) {
   myLibrary.splice(index, 1)
 }
-
-
-
 
 
 
