@@ -150,6 +150,11 @@ function checkLibrary(book) {
 
 function addBook(event) {
   event.preventDefault();
+
+  if (!formInputs.checkValidity()) {
+    alert('Please fill out all fields')
+    return;
+  }
   
   // take the values from the inputs of the form and store them, then use them as the arguements for the new book constructor
  // loop through myLibrary to check if that book title already exists
