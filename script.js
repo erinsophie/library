@@ -192,6 +192,8 @@ Book.prototype.toggleReadStatus = function() {
   this.read = !this.read;
 };
 
+// remove card at specified index and update the rest of the card indexes
+
 Book.prototype.removeBook = function(index) {
   myLibrary.splice(index, 1);
   updateCardIndexes();
