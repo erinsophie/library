@@ -84,9 +84,9 @@ function displayBook(book, index) {
     removeBtn.addEventListener('click', () => {
       const cardIndex = card.dataset.index;
       card.remove();
+      myLibrary[cardIndex].removeBook(cardIndex);
       isLibraryEmpty();
       messageStatus();
-      myLibrary[cardIndex].removeBook(cardIndex);
     });
   
     const btnContainer = document.createElement('div');
