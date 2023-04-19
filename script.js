@@ -38,8 +38,6 @@ function updateCardIndexes() {
 }
 
 
-
-
 // create card element for the each book
 function displayBook(book, index) {
     const card = document.createElement('div');
@@ -105,7 +103,6 @@ function displayBook(book, index) {
   };
 
 
-
 // make form pop up when add book button is clicked
 const modal = document.querySelector('.modal');
 const addBookBtn = document.querySelector('.add-btn')
@@ -128,13 +125,26 @@ function closeModal() {
 overlay.addEventListener('click', closeModal);
 
 
-// constructor 
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
+// class 
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
+
+  toggleReadStatus() {
+    this.read = !this.read;
+  }
+
+  removeBook(index) {
+    myLibrary.splice(index, 1);
+    updateCardIndexes();
+  }
 }
+
+
 
 // check library in case book already exists 
 function checkLibrary(book) {
@@ -157,12 +167,6 @@ function addBook(event) {
     alert('Please fill out all fields');
     return;
   }
-  
-  // take the values from the inputs of the form and store them, then use them as the arguements for the new book constructor
- // loop through myLibrary to check if that book title already exists
- // assign an index to the new book and pass it to the function that creates the card
- // push the new book to the myLibrary array
- // call display book with the new book argument and its given index
 
   const title = document.querySelector('#book-title').value;
   const author = document.querySelector('#book-author').value;
@@ -186,17 +190,4 @@ function addBook(event) {
 // form button
 const formBtn = document.querySelector('.form-btn')
 formBtn.addEventListener('click', addBook);
-
-// define read status function on prototype 
-Book.prototype.toggleReadStatus = function() {
-  this.read = !this.read;
-};
-
-// remove card at specified index and update the rest of the card indexes
-
-Book.prototype.removeBook = function(index) {
-  myLibrary.splice(index, 1);
-  updateCardIndexes();
-};
-
 
