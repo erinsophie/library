@@ -145,7 +145,6 @@ class Book {
 }
 
 
-
 // check library in case book already exists 
 function checkLibrary(book) {
   for(let i = 0; i < myLibrary.length; i++) {
@@ -156,7 +155,6 @@ function checkLibrary(book) {
   }
   return false;
 }
-
 
 
 // Add book to library when form button is clicked
