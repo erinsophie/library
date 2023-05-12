@@ -107,23 +107,13 @@ function displayBook(book, index) {
 const modal = document.querySelector('.modal');
 const addBookBtn = document.querySelector('.add-btn')
 const overlay = document.querySelector('.overlay')
-const formInputs = document.querySelector('#book-form')
+const form = document.getElementById('book-form');
 
 addBookBtn.addEventListener('click', () => {
   modal.classList.add('active');
   overlay.classList.add('active');
-  formInputs.reset();
+  form.reset();
 })
-
-
-// close modal
-function closeModal() {
-  modal.classList.remove('active');
-  overlay.classList.remove('active');
-}
-
-overlay.addEventListener('click', closeModal);
-
 
 // class 
 class Book {
@@ -145,6 +135,15 @@ class Book {
 }
 
 
+// close modal
+function closeModal() {
+  modal.classList.remove('active');
+  overlay.classList.remove('active');
+}
+
+overlay.addEventListener('click', closeModal);
+
+
 // check library in case book already exists 
 function checkLibrary(book) {
   for(let i = 0; i < myLibrary.length; i++) {
@@ -158,10 +157,10 @@ function checkLibrary(book) {
 
 
 // Add book to library when form button is clicked
-function addBook(event) {
+form.addEventListener('submit', (event) => {
   event.preventDefault();
 
-  if (!formInputs.checkValidity()) {
+  if (!form.checkValidity()) {
     alert('Please fill out all fields');
     return;
   }
@@ -182,10 +181,4 @@ function addBook(event) {
   const index = myLibrary.indexOf(newBook);
   displayBook(newBook, index);
   closeModal();
-}
-
-
-// form button
-const formBtn = document.querySelector('.form-btn')
-formBtn.addEventListener('click', addBook);
-
+});
